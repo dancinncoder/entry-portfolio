@@ -20,7 +20,7 @@ const StButton = styled.button`
   transition: 0.1s ease;
   &:hover {
     background-color: #2361b9;
-    font-size: 2.1rem;
+    font-size: 2.05rem;
     /* transform: scale(1.03); */
   }
 `;

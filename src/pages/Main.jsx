@@ -4,7 +4,7 @@ import Button from "../components/Button";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 
 function Main() {
-  const [text] = useTypewriter({
+  const [keyword] = useTypewriter({
     words: ["number 3", "'3'"],
     loop: {},
     typeSpeed: 100,
@@ -16,7 +16,7 @@ function Main() {
       <StHighlightContainer>
         <StMainMessageContainer>
           <StMessage>
-            I'm a <StKeyword>{text}</StKeyword>
+            I'm a <StKeyword>{keyword}</StKeyword>
             <StKeyword>
               <Cursor />
             </StKeyword>
@@ -63,14 +63,14 @@ const StMainMessageContainer = styled.div`
 
 const StMessage = styled.h1`
   border: 1px solid blue;
-  font-size: 4.5rem;
+  font-size: 4rem;
   font-weight: 900;
   color: #353535;
 `;
 
 const StKeyword = styled.span`
   border: 1px solid blue;
-  font-size: 4.5rem;
+  font-size: 4rem;
   font-weight: 900;
   color: #3182f6;
 `;
