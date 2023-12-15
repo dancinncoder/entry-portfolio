@@ -24,8 +24,8 @@ function Main() {
     },
     {
       id: 2,
-      blackText: "After Working on a total of",
-      blueText: " 3 projects",
+      blackText: "After working on a total of ",
+      blueText: "3 projects",
       secondBlackText: "",
     },
     {
@@ -87,13 +87,16 @@ function Main() {
               </StInitialMessageContainer>
             ) : (
               <StNonInitialMessageContainer>
-                <StInitialMessage>
+                <StNonInitialMessage>
                   <StBlackText>
                     {blackText}
-                    <StBlueText>&nbsp;{blueText}</StBlueText>
+                    <StBlueText>
+                      &nbsp;{blueText}
+                      <Cursor />
+                    </StBlueText>
                     {secondBlackText}
                   </StBlackText>
-                </StInitialMessage>
+                </StNonInitialMessage>
                 <Button MoveOnToTheNextMessage={MoveOnToTheNextMessage} />
               </StNonInitialMessageContainer>
             )}
@@ -134,6 +137,7 @@ const StMainMessageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 46rem;
 `;
 
 const StMessage = styled.p`
@@ -141,7 +145,7 @@ const StMessage = styled.p`
   font-size: 4rem;
   font-weight: 900;
   color: #353535;
-  width: 50rem;
+  width: 46rem;
 `;
 
 const StInitialMessageContainer = styled.div`
@@ -169,7 +173,20 @@ const StInitialMessage = styled.p`
   font-weight: 900;
   color: #353535;
   border: 1px solid orange;
-  width: 50rem;
+  width: 46rem;
+  margin-top: 4rem;
+`;
+
+const StNonInitialMessage = styled.p`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  font-weight: 900;
+  color: #353535;
+  border: 1px solid orange;
+  width: 46rem;
 `;
 
 const StKeyword = styled.span`
