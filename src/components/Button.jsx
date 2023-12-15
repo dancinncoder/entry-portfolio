@@ -1,8 +1,12 @@
 import React from "react";
 import { styled } from "styled-components";
 
-function Button() {
-  return <StButton type="button">next</StButton>;
+function Button({ MoveOnToTheNextMessage }) {
+  return (
+    <StButton type="button" onClick={MoveOnToTheNextMessage}>
+      next
+    </StButton>
+  );
 }
 
 export default Button;
@@ -13,7 +17,7 @@ const StButton = styled.button`
   font-weight: 900;
   color: white;
   border: none;
-  height: 5rem;
+  height: 4.5rem;
   width: 8.5rem;
   border-radius: 1.2rem;
   cursor: pointer;
