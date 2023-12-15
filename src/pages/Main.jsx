@@ -1,8 +1,29 @@
-import React, { useState } from "react";
-import { styled } from "styled-components";
+import React, { useEffect, useState } from "react";
+import { keyframes, styled } from "styled-components";
 import Button from "../components/Button";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { useNavigate } from "react-router-dom";
+
+// Keyframes 정의
+const slideDown = keyframes`
+    from {
+      transform: translateY(-20px);
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  `;
+
+// 동적으로 스타일 생성
+const StBlackText = styled.span`
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 900;
+  color: white;
+  width: 46rem;
+  animation: ${slideDown} 0.5s ease;
+`;
 
 function Main() {
   const [keyword] = useTypewriter({
@@ -14,6 +35,7 @@ function Main() {
 
   const [isInitialLandering, setIsInitialLandering] = useState(true);
   const [messageIndex, setMessageIndex] = useState(0);
+  const [isAnimationVisible, setIsAnimationVisible] = useState(false);
 
   const messageGroups = [
     {
@@ -30,8 +52,7 @@ function Main() {
     },
     {
       id: 3,
-      blackText: `Always asking 
-      ‘why?’`,
+      blackText: `Always asking myself ‘why?’`,
       blueText: " 3 times",
       secondBlackText: "",
     },
@@ -63,6 +84,12 @@ function Main() {
   const finishInitialLanderingHandler = () => {
     setIsInitialLandering(false);
   };
+
+  useEffect(() => {
+    if (!isInitialLandering) {
+      setIsAnimationVisible(true);
+    }
+  }, [isInitialLandering]);
 
   return (
     <StOuterFrame>
@@ -110,7 +137,7 @@ function Main() {
 export default Main;
 
 const StOuterFrame = styled.div`
-  border: 1px solid red;
+  /* border: 1px solid red; */
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -118,10 +145,11 @@ const StOuterFrame = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background-color: black;
 `;
 
 const StHighlightContainer = styled.div`
-  border: 1px solid blue;
+  border: 1px solid #353535;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -132,7 +160,7 @@ const StHighlightContainer = styled.div`
 `;
 
 const StMainMessageContainer = styled.div`
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -140,11 +168,12 @@ const StMainMessageContainer = styled.div`
   width: 46rem;
 `;
 
-const StMessage = styled.p`
-  border: 1px solid yellow;
+const StMessage = styled.div`
+  /* border: 1px solid yellow; */
   font-size: 4rem;
   font-weight: 900;
-  color: #353535;
+  /* color: #353535; */
+  color: white;
   width: 46rem;
 `;
 
@@ -153,7 +182,7 @@ const StInitialMessageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 4rem;
 `;
 
 const StNonInitialMessageContainer = styled.div`
@@ -161,31 +190,34 @@ const StNonInitialMessageContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
+  /* border: 1px solid pink; */
+  padding: 2rem;
 `;
 
-const StInitialMessage = styled.p`
+const StInitialMessage = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   font-size: 4rem;
   font-weight: 900;
-  color: #353535;
-  border: 1px solid orange;
+  /* color: #353535; */
+  /* border: 1px solid orange; */
   width: 46rem;
   margin-top: 4rem;
 `;
 
-const StNonInitialMessage = styled.p`
+const StNonInitialMessage = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   font-size: 4rem;
   font-weight: 900;
-  color: #353535;
-  border: 1px solid orange;
+  /* color: #353535; */
+  margin-top: 1rem;
+  /* border: 1px solid orange; */
   width: 46rem;
 `;
 
@@ -210,13 +242,11 @@ const StStartButton = styled.button`
   &:hover {
     background-color: #2361b9;
     font-size: 2.05rem;
+    border: none;
     /* transform: scale(1.03); */
   }
 `;
 
-const StBlackText = styled.span`
-  text-align: center;
-`;
 const StBlueText = styled.span`
   color: #3182f6;
 `;

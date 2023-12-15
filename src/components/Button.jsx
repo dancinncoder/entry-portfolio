@@ -25,6 +25,7 @@ const StButton = styled.button`
   &:hover {
     background-color: #2361b9;
     font-size: 2.05rem;
+    border: none;
     /* transform: scale(1.03); */
   }
 `;
