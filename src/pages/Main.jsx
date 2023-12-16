@@ -1,29 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { keyframes, styled } from "styled-components";
+import React, { useState } from "react";
+import { css, keyframes, styled } from "styled-components";
 import Button from "../components/Button";
 import { useTypewriter, Cursor } from "react-simple-typewriter";
 import { useNavigate } from "react-router-dom";
-
-// Keyframes 정의
-const slideDown = keyframes`
-    from {
-      transform: translateY(-20px);
-    }
-
-    to {
-      transform: translateY(0);
-    }
-  `;
-
-// 동적으로 스타일 생성
-const StBlackText = styled.span`
-  text-align: center;
-  font-size: 4rem;
-  font-weight: 900;
-  color: white;
-  width: 46rem;
-  animation: ${slideDown} 0.5s ease;
-`;
 
 function Main() {
   const [keyword] = useTypewriter({
@@ -35,7 +14,6 @@ function Main() {
 
   const [isInitialLandering, setIsInitialLandering] = useState(true);
   const [messageIndex, setMessageIndex] = useState(0);
-  const [isAnimationVisible, setIsAnimationVisible] = useState(false);
 
   const messageGroups = [
     {
@@ -85,11 +63,9 @@ function Main() {
     setIsInitialLandering(false);
   };
 
-  useEffect(() => {
-    if (!isInitialLandering) {
-      setIsAnimationVisible(true);
-    }
-  }, [isInitialLandering]);
+  // useEffect(() => {
+  //   alert("1");
+  // }, [messageIndex]);
 
   return (
     <StOuterFrame>
@@ -251,3 +227,23 @@ const StBlueText = styled.span`
   color: #3182f6;
 `;
 const StSecondBlackText = styled.span``;
+
+// Keyframes 정의
+const slideDown = keyframes`
+    from {
+      transform: translateY(-20px);
+    }
+
+    to {
+      transform: translateY(0);
+    }
+  `;
+
+const StBlackText = styled.span`
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 900;
+  color: white;
+  width: 46rem;
+  animation: ${slideDown} 0.5s ease;
+`;
